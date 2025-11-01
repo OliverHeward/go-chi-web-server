@@ -1,0 +1,20 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend-chi-api
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+      - /app/tmp
+    environment:
+      PORT: 8080
+      ENVIRONMENT: development
+    networks:
+      - backend-chi-api-network
+
+networks:
+  backend-chi-api-network:
+    driver: bridge
